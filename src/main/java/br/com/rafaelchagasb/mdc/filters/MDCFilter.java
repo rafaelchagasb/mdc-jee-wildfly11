@@ -2,7 +2,10 @@ package br.com.rafaelchagasb.mdc.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.UUID;
 
 import org.jboss.logging.MDC;
@@ -19,12 +22,25 @@ public class MDCFilter implements javax.servlet.Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
     	 
-        MDC.put("correlation-id", UUID.randomUUID().toString());
-        chain.doFilter(request, response);  // invokes next filter in the chain
+    	configureMDC(request);
         
+        chain.doFilter(request, response);  // invokes next filter in the chain
     }
 
-    @Override
+    private void configureMDC(ServletRequest request) {
+    	
+    	 HttpServletRequest httpRequest = (HttpServletRequest) request;
+
+    	 String correlationId = httpRequest.getHeader("correlation-id");
+    	 
+    	 if(correlationId != null) {
+    		 MDC.put("correlation-id", correlationId);
+    	 } else {
+    		 MDC.put("correlation-id", UUID.randomUUID().toString());
+    	 }
+	}
+
+	@Override
     public void destroy() {
 
     }
