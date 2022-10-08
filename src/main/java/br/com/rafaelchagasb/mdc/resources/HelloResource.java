@@ -3,6 +3,7 @@ package br.com.rafaelchagasb.mdc.resources;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 import br.com.rafaelchagasb.mdc.services.Service;
@@ -19,8 +20,8 @@ public class HelloResource {
 	
 	@Path("{name}")
 	@GET
-	public Response hello() {
-		LOGGER.info("Hello World");
+	public Response hello(@PathParam("name") String name) {
+		LOGGER.info("Hello: " + name);
 		
 		myService.writeLog();
 		
