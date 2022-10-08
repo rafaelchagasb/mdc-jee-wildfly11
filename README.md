@@ -1,5 +1,7 @@
 # MDC to tracing logs - JEE Wildfly 11 
 
+This project intercepts requests and adds information that will be used to track all logs from the request.
+
 ## How do I run?
 
 1 Compile project
