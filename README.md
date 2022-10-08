@@ -29,7 +29,9 @@
 
 Send a request
 
-```curl --location --request GET 'http://localhost:8080/mdc-jee-wildfly11/api/hello/Mart'```
+```shell
+curl --location --request GET 'http://localhost:8080/mdc-jee-wildfly11/api/hello/Mart'
+```
 
 Open logs
 
@@ -41,6 +43,6 @@ Open logs
 
 For provided tracing between endpoints you can send value in header
 
-```curl --location --request GET 'http://localhost:8080/mdc-jee-wildfly11/api/hello/Mart' \
---header 'correlation-id: custom-e93de11b-91ee-4aed-bc9d-d61042dba4bc'
+```shell
+curl --location --request GET 'http://localhost:8080/mdc-jee-wildfly11/api/hello/Mart' --header 'correlation-id: custom-e93de11b-91ee-4aed-bc9d-d61042dba4bc'
 ```
