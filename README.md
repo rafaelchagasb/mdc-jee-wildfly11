@@ -38,3 +38,9 @@ Open logs
 
 13:27:58,849 INFO  [Service] (default task-2) [CORRELATION-ID:6452d09a-1cf6-437a-8abb-a550bac46fed] Service running
 ```
+
+For provided tracing between endpoints you can send value in header
+
+```curl --location --request GET 'http://localhost:8080/mdc-jee-wildfly11/api/hello/Mart' \
+--header 'correlation-id: custom-e93de11b-91ee-4aed-bc9d-d61042dba4bc'
+```
